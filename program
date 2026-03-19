@@ -1,0 +1,45 @@
+using System;
+using Pagamentos;
+
+namespace Pagamentos
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            
+            CartaoCredito cartao = new CartaoCredito()
+            {
+                Valor = 250.00,
+                Data = DateTime.Now,
+                NumeroCartao = "1234-5678-9012-3456",
+                Parcelas = 3
+            };
+
+           
+            Pix pix = new Pix()
+            {
+                Valor = 100.00,
+                Data = DateTime.Now,
+                ChavePix = "heloisavdias85@gmail.com",
+                CodigoCopiaECola = "PIX123"
+            };
+
+           
+            Boleto boleto = new Boleto()
+            {
+                Valor = 300.00,
+                Data = DateTime.Now,
+                CodigoBarras = "123456789",
+                DataVencimento = DateTime.Now.AddDays(5)
+            };
+
+            
+            cartao.Processar();
+            pix.Processar();
+            boleto.Processar();
+
+            Console.ReadLine();
+        }
+    }
+}
